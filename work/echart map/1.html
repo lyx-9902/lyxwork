@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			html ,body{
+				width: 100%;
+				height: 100%;
+			}
+		    .centerItem {
+		        width: 100%;
+		        height: 100%;
+		        background-color: #003077;
+		        /* margin: 110px auto 0 auto; */
+		    }
+		</style>
+	</head>
+<body>
+    <!-- 中国地图展示 -->
+    <div id="mapBox" class="centerItem"></div>
+	
+	
+    <script src="echarts.js"></script>
+    <script src="china.js"></script>
+ 
+ 
+    <script>
+console.log(echarts);
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('mapBox'));
+      
+	  var state = {
+	              data:[
+	                  {
+	                      name: "南海诸岛",
+	                      value: 0
+	                  },
+	                  {
+	                      name: '北京',
+	                      value: 20
+	                  },
+	                  {
+	                      name: '天津',
+	                      value: 30
+	                  },
+	                  {
+	                      name: '上海',
+	                      value: 229
+	                  },
+	                  {
+	                      name: '重庆',
+	                      value: 59
+	                  },
+	                  {
+	                      name: '河北',
+	                      value: 190
+	                  },
+	                  {
+	                      name: '河南',
+	                      value: 300
+	                  },
+	                  {
+	                      name: '云南',
+	                      value: 20
+	                  },
+	                  {
+	                      name: '辽宁',
+	                      value: 40
+	                  },
+	                  {
+	                      name: '黑龙江',
+	                      value: 37
+	                  },
+	                  {
+	                      name: '湖南',
+	                      value: 180
+	                  },
+	                  {
+	                      name: '安徽',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '山东',
+	                      value: 67
+	                  },
+	                  {
+	                      name: '新疆',
+	                      value: 10
+	                  },
+	                  {
+	                      name: '江苏',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '浙江',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '江西',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '湖北',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '广西',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '甘肃',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '山西',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '内蒙古',
+	                      value: 89
+	                  },
+	                  {
+	                      name: '陕西',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '吉林',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '福建',
+	                      value: 66
+	                  },
+	                  {
+	                      name: '贵州',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '广东',
+	                      value: 330
+	                  },
+	                  {
+	                      name: '青海',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '西藏',
+	                      value: 74
+	                  },
+	                  {
+	                      name: '四川',
+	                      value: 601
+	                  },
+	                  {
+	                      name: '宁夏',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '海南',
+	                      value: 45
+	                  },
+	                  {
+	                      name: '台湾',
+	                      value: 23
+	                  },
+	                  {
+	                      name: '香港',
+	                      value: 0
+	                  },
+	                  {
+	                      name: '澳门',
+	                      value: 0
+	                  }
+	              ]
+	          }
+
+	let option = {
+	    tooltip: {
+	        formatter: function (e , t, n) {
+	            return e.seriesName + "<br />" + e.name + "：" + e.value
+	        }
+	    },
+	    visualMap: {
+	        min: 0,
+	        max: 1000,
+	        right: 26,
+	        bottom: 40,
+	        showLabel: !0,
+	        pieces: [{
+	            gt: 500,
+	            label: "500家以上",
+	            color: "#ED5351"
+	        }, {
+	            gte: 200,
+	            lte: 500,
+	            label: "201-500家",
+	            color: "#3B5A97"
+	        }, {
+	            gte: 100,
+	            lt: 200,
+	            label: "101-200家",
+	            color: "#59D9A5"
+	        }, {
+	            gt: 51,
+	            lte: 100,
+	            label: "51-100家",
+	            color: "#F6C021"
+	        }, {
+	            label: "1-50家",
+	            gt: 0,
+	            lte: 50,
+	            color: "#6DCAEC"
+	        }
+	        ],
+	        show: !0
+	    },
+	    geo: {
+	        map: "china",
+	        roam: !1,
+	        scaleLimit: {
+	            min: 1,
+	            max: 2
+	        },
+	        zoom: 1.13,
+	        layoutCenter: ['30%', '30%'],                //地图中心在屏幕中的位置
+	        label: {
+	            normal: {
+	                show: !0,
+	                fontSize: "14",
+	                color: "rgba(0,0,0,0.7)"
+	            }
+	        },
+	        itemStyle: {
+	            normal: {
+	                borderColor: "rgba(0, 0, 0, 0.2)"
+	            },
+	            emphasis: {
+	                areaColor: "#F5DEB3",
+	                shadowOffsetX: 0,
+	                shadowOffsetY: 0,
+	                borderWidth: 0
+	            }
+	        }
+	    },
+	    series: [{
+	        name: "客户统计",
+	        type: "map",
+	        geoIndex: 0,
+	        data:state.data,
+	        areaColor: '#0FB8F0'
+	    }]
+	};
+	      
+
+	myChart.setOption(option);
+	
+	
+	
+    </script>
+ 
+</body>
+</html>
