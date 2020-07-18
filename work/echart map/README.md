@@ -11,3 +11,5 @@
 let option ={  }
 
 ​	myChart.setOption(option);
+
+先引入 echart.js  在引入 china.js
